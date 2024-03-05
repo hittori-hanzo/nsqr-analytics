@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
+
+    <menuitem name="menu-analytics-book"
+              title="Analytics" />
+
+    <menuitem name="menu-analytics-submenu"
+              parent="menu-analytics-book"
+              title="Records and Query Packs"
+              action="analytics.all"/>
+
+    <action-view name="analytics.all"
+                 title="Analytics"
+                 model="com.axelor.analytics.db.QPack">
+        <view type="grid" name="analytics-grid"/>
+        <view type="form" name="analytics-record-form"/>
+    </action-view>
+
+</object-views>

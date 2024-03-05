@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  https://axelor.com/xml/ns/object-views/object-views_6.0.xsd">
+
+    <grid name="analytics-grid"
+          title="Analytics"
+          model="com.axelor.analytics.db.QPack">
+        <field name="executor" />
+        <field name="model" />
+        <field name="qRecord" />
+    </grid>
+
+    <form name="analytics-record-form"
+          title="Analytics QRecord"
+          model="com.axelor.analytics.db.QPack">
+
+        <panel name="overviewPanel" title="Query Pack">
+            <field name="executor" colSpan="3"/>
+            <field name="model" colSpan="3"/>
+            <panel-related name="record"
+                           field="record"
+                           form-view="query-record-form-popup">
+                <field name="identity" colSpan="3"/>
+                <field name="name" colSpan="4"/>
+                <field name="classification" colSpan="4"/>
+            </panel-related>
+        </panel>
+
+
+        <panel name="sidePanel" sidebar="true">
+          <field name="createdOn"/>
+          <field name="createdBy"/>
+          <field name="updatedOn"/>
+          <field name="updatedBy"/>
+        </panel>
+    </form>
+
+    <form name="query-record-form-popup"
+          title="Query Records"
+          model="com.axelor.analytics.db.QRecord">
+        <panel title="Q-Records">
+            <field name="identity" />
+            <field name="name" />
+            <field name="classification" />
+        </panel>
+    </form>
+
+</object-views>
