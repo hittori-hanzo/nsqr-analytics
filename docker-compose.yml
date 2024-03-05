@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  postgresql:
+    image: postgres:12-alpine
+    container_name: 'postgresanalytics'
+    hostname: 'postgresanalytics'
+    environment:
+      POSTGRES_DB: analytics
+      POSTGRES_USER: axelor
+      POSTGRES_PASSWORD: axelor
+      POSTGRES_HOST_AUTH_METHOD: password
+    restart: unless-stopped
+    volumes:
+      - "../analytics:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+  axelor:
+    image: analytics-0.0.1:latest
+    container_name: 'analytics'
+    hostname: 'analytics'
+    restart: unless-stopped
+    environment:
+      JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,address=*:5005,server=y,suspend=n"
+    volumes:
+      - "./app.properties:/usr/local/tomcat/app.properties"
+    ports:
+      - "8080:8080"
+      - "5005:5005"
