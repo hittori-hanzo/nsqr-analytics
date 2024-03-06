@@ -36,5 +36,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = 'nsqr-analytics'
+
 include 'modules:analytics'
 //findProject(':modules:analytics')?.name = 'analytics'
